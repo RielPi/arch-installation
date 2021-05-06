@@ -28,7 +28,7 @@
 
 ### Format partitions
 - **boot**: `mkfs.fat -F32 /dev/sdX1`
-- **swap**: `mkswap /dev/sdXn & swapon /dev/sdX2`
+- **swap**: `mkswap /dev/sdX2` & `swapon /dev/sdX2`
 - **root** and **home**: `mkfs.ext4 /dev/sdXn` n: (3, 4)
 
 ### Mounting
@@ -47,3 +47,4 @@
 - Generate **fstab** file: `genfstab -U -p /mnt >> /mnt/etc/fstab`
   > Verify the current fstab config for any mistake
 - Chroot into Arch: `arch-chroot /mnt`
+- Clone this repo and run [base-install.sh](base-install.sh): `git clone https://github.com/RielPi/arch-installation`
