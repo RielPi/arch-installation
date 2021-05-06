@@ -43,7 +43,7 @@
 
 - [ ] todo: Mirrorlist config
 
-- Install base system: `pacstrap -i /mnt base base-devel`
+- Install base system: `pacstrap -i /mnt base base-devel git nano`
 - Generate **fstab** file: `genfstab -U -p /mnt >> /mnt/etc/fstab`
   > Verify the current fstab config for any mistake
 - Chroot into Arch: `arch-chroot /mnt`
