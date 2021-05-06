@@ -41,10 +41,16 @@ echo "[6] Editing /etc/sudoers, uncomment %wheel ALL=(ALL) ALL"
 read -n 1 -s -r -p "...Press any key to continue... "
 nano /etc/sudoers
 
-# [7] Enable multilib
-echo "[7] Editing pacman.conf, uncomment multilib repo"
-read -n 1 -s -r -p "...Press any key to continue... "
-nano /etc/pacman.conf
+# [7] Enable multilib & AUR
+echo "
+[multilib]
+Include = /etc/pacman.d/mirrorlist
+
+# AUR
+[archlinuxfr]
+SigLevel = Never
+Server = http://repo.archlinux.fr/$arch" >> /etc/pacman.conf
+
 pacman -Sy
 
 # [8] Install packages
@@ -53,7 +59,6 @@ pacman -S linux linux-headers networkmanager intel-ucode
 mkinitcpio -p linux
 systemctl enable NetworkManager.service
 
-
 # [9] bootctl
 bootctl install
 
@@ -61,8 +66,40 @@ echo "title Arch Linux" >> /boot/loader/entries/arch.conf
 echo "linux /vmlinuz-linux" >> /boot/loader/entries/arch.conf
 echo "initrd /intel-ucode.img" >> /boot/loader/entries/arch.conf
 echo "initrd /initramfs-linux.img" >> /boot/loader/entries/arch.conf
+
+# [10] systemd boot hook
+mkdir /etc/pacman.d/hooks
+echo "[Trigger]
+Type = Package
+Operation = Upgrade
+Target = systemd
+
+[Action]
+Description = Updating systemd-boot
+When = PostTransaction
+Exec = /usr/bin/bootctl update" >> /etc/pacman.d/hooks/systemd-boot.hook
+
+# [11] Nvidia Drivers
+pacman -S xorg-{server,apps,xinit,twm,xclock}
+pacman -S nvidia nvidia-{utils,libgl,settings} lib32-nvidia-{utils,libgl}
+pacman -S vulkan-icd-loader lib32-vulkan-icd-loader
+
+echo "[Trigger]
+Operation=Install
+Operation=Upgrade
+Operation=Remove
+Type=Package
+Target=nvidia
+Target=linux
+
+[Action]
+Description=Update Nvidia module in initcpio
+Depends=mkinitcpio
+When=PostTransaction
+NeedsTargets
+Exec=/bin/sh -c 'while read -r trg; do case $trg in linux) exit 0; esac; done; /usr/bin/mkinitcpio -P'" >> /etc/pacman.d/hooks/nvidia.hook
+
+# edit bellow line
 echo "options root=PARTUUID=$(blkid -s PARTUUID -o value /dev/sdX3) rw" >> /boot/loader/entries/arch.conf
-
 # edit above line
-echo "Installation was done! Proceed to install Nvidia drivers, check in the repo"
-
+echo "Installation was completed!"
