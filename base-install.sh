@@ -30,7 +30,7 @@ echo "[4] Insert password for root"
 passwd
 
 # [5] create user
-echo "[5] Create user
+echo "[5] Create user"
 read -p "...Insert username: " user
 read -p "...Insert fullname: " fullname
 useradd -m -g users -G wheel,storage,power -s /bin/bash $user -c $fullname
@@ -62,3 +62,7 @@ echo "linux /vmlinuz-linux" >> /boot/loader/entries/arch.conf
 echo "initrd /intel-ucode.img" >> /boot/loader/entries/arch.conf
 echo "initrd /initramfs-linux.img" >> /boot/loader/entries/arch.conf
 echo "options root=PARTUUID=$(blkid -s PARTUUID -o value /dev/sdX3) rw" >> /boot/loader/entries/arch.conf
+
+# edit above line
+echo "Installation was done! Proceed to install Nvidia drivers, check in the repo"
+
