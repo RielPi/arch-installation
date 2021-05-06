@@ -48,3 +48,9 @@
   > Verify the current fstab config for any mistake
 - Chroot into Arch: `arch-chroot /mnt`
 - Clone this repo and run [base-install.sh](base-install.sh): `git clone https://github.com/RielPi/arch-installation`
+- Edit `/etc/mkinitcpio.conf` and add modules for Nvidia:
+  - **MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)**
+- Edit `/boot/loader/entries/arch.conf` at the end of the line `options root=...` add:
+  - **nvidia-drm.modeset=1**
+- `mkinitcpio -p linux`
+- Exit chroot, `umount -a` & `reboot`
