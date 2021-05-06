@@ -1,5 +1,13 @@
 #!/bin/bash
 
+read -p "Did you modify the last line of the script? (y/n): " option
+if [ $option == n ]; then
+  echo "Add root partition to /dev/sdX3 and run again the script."
+  exit
+else 
+  echo "Continue"
+fi
+
 # [1] timezone
 echo "[1] Setting timezone (America/Bogota)"
 ln -sf /usr/share/zoneinfo/America/Bogota /etc/localtime
