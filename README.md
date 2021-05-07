@@ -1,5 +1,11 @@
 # ArchLinux Installation
 
+- Download ISO from [Archlinux website](https://www.archlinux.org/download/)
+- USB prep:
+```shell
+sudo dd bs=4M if=/ruta/a/archlinux.iso of=/dev/sdX status=progress && sync
+```
+
 ## Before installing
 - Load Keymap: `loadkeys la-latin1`
 - Verify EFI mode is enabled: `efivar -l`
@@ -53,3 +59,9 @@
   - **nvidia-drm.modeset=1**
 - `mkinitcpio -p linux`
 - Exit chroot, `umount -a` & `reboot`
+
+## Post-Installation
+
+- Run [packages.sh](packages.sh)
+- Desktop Enviroments
+  - Run [kde.sh](kde.sh)
