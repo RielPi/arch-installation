@@ -4,8 +4,8 @@ sudo pacman -Syu
 # "essenstials"
 sudo pacman -S curl htop hunspell{-es_any,-en_US} gnupg screenfetch ufw wget zsh zsh-completions
 # fonts
-sudo pacman -S ttf-{hack,anonymous-pro,dejavu,freefont,liberation,roboto,bitstream-vera,croscore,droid,ubuntu-font-family} lib32-fontconfig wqy-zenhei
-#yay -S ttf-{ms-fonts,monaco,emojione-color,twemoji-color} noto-fonts-emoji
+sudo pacman -S noto-fonts-emoji ttf-{hack,anonymous-pro,dejavu,freefont,liberation,roboto,bitstream-vera,croscore,droid,ubuntu-font-family} lib32-fontconfig wqy-zenhei
+#yay -S ttf-{ms-fonts,monaco,emojione-color,twemoji-color}
 
 # ufw
 sudo enable ufw
