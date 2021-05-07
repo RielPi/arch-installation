@@ -52,6 +52,8 @@ Include = /etc/pacman.d/mirrorlist
 SigLevel = Never
 Server = http://repo.archlinux.fr/\$arch" >> /etc/pacman.conf
 
+echo -e "\n[options]\n# Misc options\nUseSyslog\nColor\nTotalDownload\nCheckSpace" >> /etc/pacman.conf
+
 pacman -Sy
 
 # [8] Install packages
