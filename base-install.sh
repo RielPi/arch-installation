@@ -43,6 +43,8 @@ read -n 1 -s -r -p "...Press any key to continue... "
 nano /etc/sudoers
 
 # [7] Enable multilib & AUR
+echo -e "\n[options]\n# Misc options\nUseSyslog\nColor\nTotalDownload\nCheckSpace" >> /etc/pacman.conf
+
 echo "
 [multilib]
 Include = /etc/pacman.d/mirrorlist
@@ -51,8 +53,6 @@ Include = /etc/pacman.d/mirrorlist
 [archlinuxfr]
 SigLevel = Never
 Server = http://repo.archlinux.fr/\$arch" >> /etc/pacman.conf
-
-echo -e "\n[options]\n# Misc options\nUseSyslog\nColor\nTotalDownload\nCheckSpace" >> /etc/pacman.conf
 
 pacman -Sy
 
