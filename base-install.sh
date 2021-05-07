@@ -2,7 +2,8 @@
 
 read -p "Did you modify the last line of the script? (y/n): " option
 if [ $option == n ]; then
-  echo "Add root partition to /dev/sdX3 and run again the script."
+  lsblk
+  echo "Add root partition to /dev/sdX3 (last line) and run again the script."
   exit
 else 
   echo "Continue"
@@ -32,8 +33,8 @@ passwd
 # [5] create user
 echo "[5] Create user"
 read -p "...Insert username: " user
-read -p "...Insert fullname: " fullname
-useradd -m -g users -G wheel,storage,power -s /bin/bash $user -c $fullname
+read -p "...Insert name: " name
+useradd -m -g users -G wheel,storage,power -s /bin/bash $user -c $name
 passwd $user
 
 # [6] uncheck %wheel ALL=(ALL) ALL
@@ -49,7 +50,7 @@ Include = /etc/pacman.d/mirrorlist
 # AUR
 [archlinuxfr]
 SigLevel = Never
-Server = http://repo.archlinux.fr/$arch" >> /etc/pacman.conf
+Server = http://repo.archlinux.fr/\$arch" >> /etc/pacman.conf
 
 pacman -Sy
 
@@ -67,7 +68,7 @@ echo "linux /vmlinuz-linux" >> /boot/loader/entries/arch.conf
 echo "initrd /intel-ucode.img" >> /boot/loader/entries/arch.conf
 echo "initrd /initramfs-linux.img" >> /boot/loader/entries/arch.conf
 
-# [10] systemd boot hook
+# [10] systemd-boot hook, DO NOT REMOVE (archwiki for more info)
 mkdir /etc/pacman.d/hooks
 echo "[Trigger]
 Type = Package
@@ -80,10 +81,10 @@ When = PostTransaction
 Exec = /usr/bin/bootctl update" >> /etc/pacman.d/hooks/systemd-boot.hook
 
 # [11] Nvidia Drivers
-pacman -S xorg-{server,apps,xinit,twm,xclock}
-pacman -S nvidia nvidia-{utils,libgl,settings} lib32-nvidia-{utils,libgl}
-pacman -S vulkan-icd-loader lib32-vulkan-icd-loader
+pacman -S xorg xorg-apps xorg-init xorg-server xorg-server-devel
+pacman -S nvidia nvidia-{utils,libgl,settings} lib32-nvidia-{utils,libgl} vulkan-icd-loader lib32-vulkan-icd-loader
 
+# nvidia hook, DO NOT REMOVE (archwiki for more info)
 echo "[Trigger]
 Operation=Install
 Operation=Upgrade
@@ -98,6 +99,9 @@ Depends=mkinitcpio
 When=PostTransaction
 NeedsTargets
 Exec=/bin/sh -c 'while read -r trg; do case $trg in linux) exit 0; esac; done; /usr/bin/mkinitcpio -P'" >> /etc/pacman.d/hooks/nvidia.hook
+
+# Reduce swappiness
+echo "vm.swappiness=10" >> /etc/sysctl.d/99-sysctl.conf
 
 # edit bellow line
 echo "options root=PARTUUID=$(blkid -s PARTUUID -o value /dev/sdX3) rw" >> /boot/loader/entries/arch.conf
