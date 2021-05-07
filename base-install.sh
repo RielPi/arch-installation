@@ -57,7 +57,7 @@ Server = http://repo.archlinux.fr/\$arch" >> /etc/pacman.conf
 pacman -Sy
 
 # [8] Install packages
-pacman -S linux linux-headers networkmanager intel-ucode
+pacman -S linux linux-headers man-db networkmanager intel-ucode
 
 mkinitcpio -p linux
 systemctl enable NetworkManager.service
