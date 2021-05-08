@@ -1,4 +1,21 @@
+> Verify each step and scripts.<br>
+> ⚠️ I'm not responsible for any data loss during this procress, the user is responsible for their actions. ⚠️<br>
+> Feel free to fork this repo and make modifications according to your needs.
+
 # ArchLinux Installation
+
+This is a WIP, base installation of Arch and KDE works well, currently working for some minimal tweaks for KDE. Summary:
+- Intel & Nvidia drivers
+- Packages: [modify on packages.sh](packages.sh)
+  - Tools: Curl, GnuPG, Htop, Hunspell, UFW & GUFW, wget, ZSH
+  - Pipewire is used instead of Pulseaudio.
+  - Fonts for steam and DE.
+  - AUR Helper: Paru [more info](https://github.com/morganamilo/paru).
+  - Apps & Software: Anki, Bitwarden, Cryptomator, Discord, Firefox, Fluent Reader, Foliate, Spotify, Telegram, VLC, VSCode.
+  - Gaming: Gamemode, Lutris, Steam, Wine staging branch & dependencies.
+- Desktop enviroments: KDE
+
+---
 
 - Download ISO from [Archlinux website](https://www.archlinux.org/download/)
 - USB prep:
