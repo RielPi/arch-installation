@@ -27,3 +27,5 @@ chsh -s /usr/bin/zsh
 echo "Packages installed!"
 echo "Reboot your system and install Paru AUR Helper with packages-aur.sh"
 chmod +x packages-aur.sh
+echo ""
+echo "To exit the installation run: exit & umount /mnt/boot & umount /mnt/home & umount /mnt & reboot
