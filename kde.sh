@@ -17,16 +17,12 @@ sudo pacman -S ark dolphin dolphin-plugins filelight gwenview kwrite k{calc,deco
 # plank good, latte bad
 sudo pacman -S plank
 
-echo " Add the following config in /etc/sddm.conf
-[General]
-Numlock=on
+cd ~
+mkdir Desktop Documents Downloads Pictures Videos
 
-[Theme]
-# Current theme name
-Current=breeze
+# config files
+# mv config/kwin.sh ~/.config/plasma-workspace/env/kwin.sh #WIP
+sudo mv config/sddm.conf /etc/sddm.conf
 
-# Cursor theme used in the greeter
-CursorTheme=breeze_cursors"
-echo "------------------------"
 echo "Kde plasma is installed!"
 echo "Reboot your system"
