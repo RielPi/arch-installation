@@ -34,7 +34,7 @@ read -n 1 -s -r -p "...Press any key to continue... "
 nano /etc/sudoers
 
 # [7] Enable multilib & AUR
-echo configs/pacman.conf >> /etc/pacman.conf
+cat configs/pacman.conf >> /etc/pacman.conf
 pacman -Sy
 
 # [8] Install packages
