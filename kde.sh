@@ -14,6 +14,9 @@ SingleClick=false" >> ~/.config/kdeglobals
 # applications
 sudo pacman -S ark dolphin dolphin-plugins filelight gwenview kwrite k{calc,deconnect,floppy,runner,onsole} partitionmanager python-nautilus okular spectacle transmission-qt
 
+# plank good, latte bad
+sudo pacman -S plank
+
 echo " Add the following config in /etc/sddm.conf
 [General]
 Numlock=on
