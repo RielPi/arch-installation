@@ -1,14 +1,5 @@
 #!/bin/bash
 
-read -p "Did you modify the last line of the script? (y/n): " option
-if [ $option == n ]; then
-  lsblk
-  echo "Add root partition to /dev/sdX3 (last line) and run again the script."
-  exit
-else 
-  echo "Continue"
-fi
-
 # [1] timezone
 echo "[1] Setting timezone (America/Bogota)"
 ln -sf /usr/share/zoneinfo/America/Bogota /etc/localtime
@@ -60,6 +51,19 @@ echo "linux /vmlinuz-linux" >> /boot/loader/entries/arch.conf
 echo "initrd /intel-ucode.img" >> /boot/loader/entries/arch.conf
 echo "initrd /initramfs-linux.img" >> /boot/loader/entries/arch.conf
 
+rootpartition=$(df / | grep -Eo '/dev/[^ ]+')
+lsblk
+echo ""
+echo "Make sure this is correct, otherwise you'll have trouble booting your system"
+read -p "Is \"$rootpartition\" your (/) root partition? (y/n): " option
+
+if [[ $option == y ]]; then
+    echo "options root=PARTUUID=$(blkid -s PARTUUID -o value $rootpartition) rw nvidia-drm.modeset=1" >> /boot/loader/entries/arch.conf
+elif [[ $option == n ]]; then
+    read -p "Insert the name of your root partition (/dev/sda3, /dev/sdb3): " new
+    echo "options root=PARTUUID=$(blkid -s PARTUUID -o value $new) rw nvidia-drm.modeset=1" >> /boot/loader/entries/arch.conf
+fi
+
 # [10] Nvidia Drivers
 pacman -S xorg xorg-apps xorg-init xorg-server xorg-server-devel
 pacman -S nvidia nvidia-{utils,libgl,settings} lib32-nvidia-{utils,libgl} vulkan-icd-loader lib32-vulkan-icd-loader
@@ -74,7 +78,4 @@ cp hooks/nvidia.hook /etc/pacman.d/hooks/nvidia.hook
 # Reduce swappiness
 echo "vm.swappiness=10" >> /etc/sysctl.d/99-sysctl.conf
 
-# edit bellow line
-echo "options root=PARTUUID=$(blkid -s PARTUUID -o value /dev/sdX3) rw" >> /boot/loader/entries/arch.conf
-# edit above line
 echo "Installation was completed!"
