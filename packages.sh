@@ -25,14 +25,14 @@ read -n 1 -s -r -p "...Press any key to continue... "
 sudo nano /etc/paru.conf
 
 # packages
-sudo pacman -S firefox code discord telegram-desktop
+sudo pacman -S anki firefox foliate code discord telegram-desktop
 
 # key required for spotify (official site), it won't install without it
 curl -sS https://download.spotify.com/debian/pubkey_0D811D58.gpg | gpg --import -
 # required by cryptomator
-paru -S jdk jdk-adoptopenjdk
+paru -S jdk jdk-adoptopenjdk davfs2 kio-fuse
 
-paru -S bitwarden cryptomator spotify obsidian-appimage
+paru -S bitwarden cryptomator fluent-reader spotify obsidian-appimage
 
 # gaming
 sudo pacman -S wine-staging wine_gecko wine-mono winetricks giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils libpulse lib32-libpulse libgpg-error lib32-libgpg-error alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib libjpeg-turbo lib32-libjpeg-turbo sqlite lib32-sqlite libxcomposite lib32-libxcomposite libxinerama lib32-libgcrypt libgcrypt lib32-libxinerama ncurses lib32-ncurses opencl-icd-loader lib32-opencl-icd-loader libxslt lib32-libxslt libva lib32-libva gtk3 lib32-gtk3 gst-plugins-base-libs lib32-gst-plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader
