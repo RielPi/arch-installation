@@ -25,7 +25,7 @@ read -n 1 -s -r -p "...Press any key to continue... "
 sudo nano /etc/paru.conf
 
 # packages
-sudo pacman -S anki firefox foliate code discord telegram-desktop
+sudo pacman -S anki mpv firefox foliate code discord telegram-desktop vlc
 
 # key required for spotify (official site), it won't install without it
 curl -sS https://download.spotify.com/debian/pubkey_0D811D58.gpg | gpg --import -
