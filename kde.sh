@@ -24,5 +24,10 @@ mkdir Desktop Documents Downloads Pictures Videos
 # mv config/kwin.sh ~/.config/plasma-workspace/env/kwin.sh #WIP
 sudo mv config/sddm.conf /etc/sddm.conf
 
+# kdeconnect, firewall allow
+sudo ufw allow 1714:1764/udp
+sudo ufw allow 1714:1764/tcp
+sudo ufw reload
+
 echo "Kde plasma is installed!"
 echo "Reboot your system"
