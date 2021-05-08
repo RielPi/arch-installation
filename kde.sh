@@ -12,7 +12,7 @@ echo "[KDE]
 SingleClick=false" >> ~/.config/kdeglobals
 
 # applications
-sudo pacman -S ark dolphin dolphin-plugins filelight gwenview kwrite k{calc,deconnect,floppy,runner,onsole} partitionmanager python-nautilus okular spectacle transmission-qt
+sudo pacman -S ark dolphin dolphin-plugins filelight gwenview kwrite k{calc,deconnect,floppy,runner,onsole} partitionmanager okular spectacle transmission-qt
 
 # plank good, latte bad
 sudo pacman -S plank
