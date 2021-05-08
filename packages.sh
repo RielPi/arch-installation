@@ -23,3 +23,7 @@ sudo pacman -S gamemode steam steam-native-runtime lutris
 
 # zsh
 chsh -s /usr/bin/zsh
+
+echo "Packages installed!"
+echo "Reboot your system and install Paru AUR Helper with packages-aur.sh"
+chmod +x packages-aur.sh
