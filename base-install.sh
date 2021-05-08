@@ -65,7 +65,7 @@ elif [[ $option == n ]]; then
 fi
 
 # [10] Nvidia Drivers
-pacman -S xorg xorg-apps xorg-init xorg-server xorg-server-devel
+pacman -S xorg xorg-apps
 pacman -S nvidia nvidia-{utils,libgl,settings} lib32-nvidia-{utils,libgl} vulkan-icd-loader lib32-vulkan-icd-loader
 
 # [11] Hooks
