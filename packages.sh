@@ -30,7 +30,7 @@ sudo pacman -S anki mpv firefox foliate code discord telegram-desktop vlc
 # key required for spotify (official site), it won't install without it
 curl -sS https://download.spotify.com/debian/pubkey_0D811D58.gpg | gpg --import -
 # required by cryptomator
-paru -S jdk jdk-adoptopenjdk davfs2 kio-fuse
+paru -S jdk jdk-adoptopenjdk davfs2 kio-fuse sshfs
 
 paru -S bitwarden cryptomator fluent-reader spotify obsidian-appimage
 
