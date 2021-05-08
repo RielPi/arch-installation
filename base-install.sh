@@ -43,17 +43,7 @@ read -n 1 -s -r -p "...Press any key to continue... "
 nano /etc/sudoers
 
 # [7] Enable multilib & AUR
-echo -e "\n[options]\n# Misc options\nUseSyslog\nColor\nTotalDownload\nCheckSpace" >> /etc/pacman.conf
-
-echo "
-[multilib]
-Include = /etc/pacman.d/mirrorlist
-
-# AUR
-[archlinuxfr]
-SigLevel = Never
-Server = http://repo.archlinux.fr/\$arch" >> /etc/pacman.conf
-
+echo configs/pacman.conf >> /etc/pacman.conf
 pacman -Sy
 
 # [8] Install packages
@@ -70,37 +60,16 @@ echo "linux /vmlinuz-linux" >> /boot/loader/entries/arch.conf
 echo "initrd /intel-ucode.img" >> /boot/loader/entries/arch.conf
 echo "initrd /initramfs-linux.img" >> /boot/loader/entries/arch.conf
 
-# [10] systemd-boot hook, DO NOT REMOVE (archwiki for more info)
-mkdir /etc/pacman.d/hooks
-echo "[Trigger]
-Type = Package
-Operation = Upgrade
-Target = systemd
-
-[Action]
-Description = Updating systemd-boot
-When = PostTransaction
-Exec = /usr/bin/bootctl update" >> /etc/pacman.d/hooks/systemd-boot.hook
-
-# [11] Nvidia Drivers
+# [10] Nvidia Drivers
 pacman -S xorg xorg-apps xorg-init xorg-server xorg-server-devel
 pacman -S nvidia nvidia-{utils,libgl,settings} lib32-nvidia-{utils,libgl} vulkan-icd-loader lib32-vulkan-icd-loader
 
+# [11] Hooks
+mkdir /etc/pacman.d/hooks
+# systemd-boot hook, DO NOT REMOVE (archwiki for more info)
+cp hooks/systemd-boot.hook /etc/pacman.d/hooks/systemd-boot.hook
 # nvidia hook, DO NOT REMOVE (archwiki for more info)
-echo "[Trigger]
-Operation=Install
-Operation=Upgrade
-Operation=Remove
-Type=Package
-Target=nvidia
-Target=linux
-
-[Action]
-Description=Update Nvidia module in initcpio
-Depends=mkinitcpio
-When=PostTransaction
-NeedsTargets
-Exec=/bin/sh -c 'while read -r trg; do case $trg in linux) exit 0; esac; done; /usr/bin/mkinitcpio -P'" >> /etc/pacman.d/hooks/nvidia.hook
+cp hooks/nvidia.hook /etc/pacman.d/hooks/nvidia.hook
 
 # Reduce swappiness
 echo "vm.swappiness=10" >> /etc/sysctl.d/99-sysctl.conf
