@@ -15,24 +15,24 @@ echo "exec dwm" >> ~/.xinitrc
 
 sudo pacman -S nitrogen redshift xorg-xinit libx11 libxinerama libxft webkit2gtk
 
-mkdir -p ~/.local/src
+mkdir -p ~/.config/dwm
 
-git clone git://git.suckless.org/st ~/.local/src/st
-git clone git://git.suckless.org/dwm ~/.local/src/dwm
-git clone git://git.suckless.org/dmenu ~/.local/src/dmenu
+git clone git://git.suckless.org/st ~/.config/dwm/st
+git clone git://git.suckless.org/dwm ~/.config/dwm/dwm
+git clone git://git.suckless.org/dmenu ~/.config/dwm/dmenu
 
 
-cd ~/.local/src/st
+cd ~/.config/dwm/st
 make clean
 make
 sudo make install
 
-cd ~/.local/src/dwm
+cd ~/.config/dwm/dwm
 make clean
 make
 sudo make install
 
-cd ~/.local/src/dmenu
+cd ~/.config/dwm/dmenu
 make clean
 make
 sudo make install
