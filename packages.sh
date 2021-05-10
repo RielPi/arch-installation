@@ -12,7 +12,7 @@ sudo ufw enable
 sudo systemctl enable ufw
 
 # audio
-sudo pacman -S ffmpeg ffmpegthumbs pipewire pipewire-alsa pipewire-pulse pulseeffects
+sudo pacman -S ffmpeg pipewire pipewire-alsa pipewire-pulse pulseeffects
 
 # packages
 sudo pacman -S anki mpv firefox foliate code discord telegram-desktop vlc
