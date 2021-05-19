@@ -6,7 +6,7 @@ ln -sf /usr/share/zoneinfo/America/Bogota /etc/localtime
 hwclock --systohc
 
 # [2] language
-echo "[2] Editing locale.gen, find en_US.UTF-8 & en_US ISO-8859-1, and uncomment"
+echo "[2] Editing locale.gen, find en_US.UTF-8 & en_US ISO-8859-1, ja_JP.UTF-8 UTF-8 and uncomment"
 read -n 1 -s -r -p "...Press any key to continue... "
 nano /etc/locale.gen
 locale-gen
