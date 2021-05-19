@@ -2,7 +2,7 @@
 sudo pacman -Syu
 
 # "essenstials"
-sudo pacman -S alacritty alsa-utils curl htop hunspell{-es_any,-en_US} gnupg libmpt playerctl numlockx screenfetch ufw gufw wget zsh zsh-completions zip xclip xdotool xsel
+sudo pacman -S alacritty alsa-utils curl htop hunspell{-es_any,-en_US} gnupg libmpt playerctl numlockx screenfetch ufw gufw wget zsh zsh-completions zip xclip xdotool xsel xwallpaper
 # fonts
 sudo pacman -S adobe-source-{code-pro-fonts,han-sans-jp-fonts,han-serif-jp-fonts} noto-fonts-emoji ttf-{hack,anonymous-pro,dejavu,freefont,liberation,roboto,bitstream-vera,croscore,droid,ubuntu-font-family} lib32-fontconfig wqy-zenhei
 #yay -S ttf-{ms-fonts,monaco,emojione-color,twemoji-color}
