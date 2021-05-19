@@ -2,9 +2,10 @@
 sudo pacman -Syu
 
 # "essenstials"
-sudo pacman -S curl htop hunspell{-es_any,-en_US} gnupg screenfetch ufw gufw wget zsh zsh-completions
+sudo pacman -S curl fcitx{-im,-configtool,-mozc} htop hunspell{-es_any,-en_US} gnupg screenfetch ufw gufw wget zsh zsh-completions
 # fonts
-sudo pacman -S noto-fonts-emoji ttf-{hack,anonymous-pro,dejavu,freefont,liberation,roboto,bitstream-vera,croscore,droid,ubuntu-font-family} lib32-fontconfig wqy-zenhei
+sudo pacman -S adobe-source-{code-pro-fonts,han-sans-jp-fonts,han-serif-jp-fonts} noto-fonts-emoji ttf-{hack,anonymous-pro,dejavu,freefont,liberation,roboto,bitstream-vera,croscore,droid,ubuntu-font-family} lib32-fontconfig wqy-zenhei
+
 #yay -S ttf-{ms-fonts,monaco,emojione-color,twemoji-color}
 # zsh
 sudo pacman -S zsh zsh-autosuggestions zsh-completions zsh-history-substring-search zsh-syntax-highlighting 
