@@ -65,7 +65,7 @@ sudo dd bs=4M if=/ruta/a/archlinux.iso of=/dev/sdX status=progress && sync
 ## Installation
 
 - [ ] todo: Mirrorlist config
-- Install base system: `pacstrap -i /mnt base base-devel git nano`
+- Install base system: `pacstrap -i /mnt base base-devel git nano vim`
 - Generate **fstab** file: `genfstab -U -p /mnt >> /mnt/etc/fstab`
   > Verify the current fstab config for any mistake
 - Chroot into Arch: `arch-chroot /mnt`
