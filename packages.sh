@@ -29,7 +29,7 @@ sudo pacman -S ffmpeg pipewire pipewire-alsa pipewire-pulse pulsemixer playerctl
 sudo pacman -S anki mpv firefox flameshot foliate discord redshift network-manager-applet
 
 # file manager: ranger
-sudo pacman -S ranger ffmpegthumbnailer ueberzug
+sudo pacman -S ranger atool ffmpegthumbnailer highlight mediainfo ueberzug
 
 # gaming
 sudo pacman -S wine-staging wine_gecko wine-mono winetricks giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils libpulse lib32-libpulse libgpg-error lib32-libgpg-error alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib libjpeg-turbo lib32-libjpeg-turbo sqlite lib32-sqlite libxcomposite lib32-libxcomposite libxinerama lib32-libgcrypt libgcrypt lib32-libxinerama ncurses lib32-ncurses opencl-icd-loader lib32-opencl-icd-loader libxslt lib32-libxslt libva lib32-libva gtk3 lib32-gtk3 gst-plugins-base-libs lib32-gst-plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader lib32-alsa-plugins lib32-dbus lib32-freetype2 lib32-gnutls lib32-libcrypt lib32-libgpg-error lib32-libldap lib32-libxml2 lib32-sdl2 libgcrypt
