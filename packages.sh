@@ -16,7 +16,7 @@ sudo pacman -S fcitx{-im,-configtool,-mozc}
 
 # Theming
 # https://github.com/PapirusDevelopmentTeam/papirus-icon-theme/#hardcoded-icons
-sudo pacman -S arc-gtk-theme capitaine-cursors kvantum-qt5
+sudo pacman -S arc-gtk-theme capitaine-cursors kvantum-qt5 qt5ct
 
 # ufw
 sudo ufw enable
