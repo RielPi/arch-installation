@@ -28,6 +28,12 @@ sudo pacman -S ffmpeg pipewire pipewire-alsa pipewire-pulse pulsemixer playerctl
 # file manager: ranger
 sudo pacman -S ranger atool ffmpegthumbnailer highlight mediainfo ueberzug
 
+# mount devices
+sudo pacman -S udiskie 
+
+# rofi
+sudo pacman -S rofi rofimoji
+
 # packages
 sudo pacman -S anki mpv firefox flameshot foliate discord redshift sxiv network-manager-applet
 
